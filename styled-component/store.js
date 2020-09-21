@@ -1,16 +1,15 @@
 import { useMemo } from "react";
 import { createStore, applyMiddleware } from "redux";
+import reducers from "./modules/reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 let store;
 
-const initialState = [];
+const initialState = {};
 
 function initStore(preloadedState = initialState) {
   return createStore(
-    () => {
-      return ["hello", "from", "redux"];
-    },
+    reducers,
     preloadedState,
     composeWithDevTools(applyMiddleware())
   );
