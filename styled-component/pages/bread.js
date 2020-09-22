@@ -16,10 +16,9 @@ const InputPink = styled.input`
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: ${(props) => (props.primary ? "16" : "20")}px;
   color: #f56a79;
 `;
-
 
 import Link from "next/link";
 
@@ -41,6 +40,7 @@ export default function Hm() {
           <InputPink
             placeholder="Введите название продукта"
             value={productInput}
+            primary
             onChange={(e) => setProductInput(e.target.value)}
           />
           <Btn
