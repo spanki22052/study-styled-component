@@ -9,20 +9,20 @@ export const Btn = styled.button`
   margin-top: 20px;
   margin-bottom: 20px;
   background: none;
-  border: 1.5px solid #f56a79;
+  border: 1.5px solid #${(props) => (props.increase ? "132743" : "f56a79")};
   border-radius: 10px;
-  color: #f56a79;
+  color: #${(props) => (props.increase ? "132743" : "f56a79")};
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 1.2em;
 
   &:hover {
-    background-color: #f56a79;
+    background-color: #${(props) => (props.increase ? "132743" : "f56a79")};
     color: white;
   }
 
   &:active {
-    background: rgba(245, 106, 121, 0.9);
+    background: #${(props) => (props.increase ? "293D58" : "rgba(245, 106, 121, 0.9)")};
     color: white;
   }
 `;
@@ -64,6 +64,7 @@ export default function Home() {
                   index: index,
                 })
               }
+              increase
             >
               increase
             </Btn>
@@ -75,6 +76,7 @@ export default function Home() {
                   index: index,
                 })
               }
+              increase
             >
               decrease
             </Btn>
