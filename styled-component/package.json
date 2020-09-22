@@ -16,5 +16,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "styled-components": "^5.2.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
