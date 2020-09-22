@@ -27,27 +27,36 @@ export const Btn = styled.button`
   }
 `;
 
+const ProductsAd = styled.h1`
+  font-size: 2em;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+`;
 export default function Home() {
   const product = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   return (
     <div className={styles.container}>
+      <ProductsAd>List of items</ProductsAd>
       {product.map((el, index) => {
         return (
           <div
             key={index}
             style={{
-              width: "100%",
+              width: "700px",
               height: "80px",
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-evenly",
             }}
           >
-            <h1>
+            <h1
+              style={{ fontSize: "1.5em", width: "250px", textAlign: "right" }}
+            >
               {el.title} - {el.amount}
             </h1>
             <Btn
-              style={{ marginLeft: "15px" }}
               onClick={() =>
                 dispatch({
                   type: "INCREASE_PRODUCT",
@@ -57,6 +66,27 @@ export default function Home() {
               }
             >
               increase
+            </Btn>
+            <Btn
+              onClick={() =>
+                dispatch({
+                  type: "INCREASE_PRODUCT",
+                  amount: -1,
+                  index: index,
+                })
+              }
+            >
+              decrease
+            </Btn>
+            <Btn
+              onClick={() =>
+                dispatch({
+                  type: "REMOVE_PRODUCT",
+                  index: index,
+                })
+              }
+            >
+              remove
             </Btn>
           </div>
         );

@@ -20,6 +20,7 @@ const InputPink = styled.input`
   color: #f56a79;
 `;
 
+
 import Link from "next/link";
 
 export default function Hm() {
@@ -30,20 +31,25 @@ export default function Hm() {
   return (
     <div className={styles.container}>
       <div className="input-holder">
-        <InputPink
-          placeholder="Введите название продукта"
-          value={productInput}
-          onChange={(e) => setProductInput(e.target.value)}
-        />
-        <Btn
-          onClick={() => {
+        <form
+          onSubmit={(e) => {
             dispatch({ type: "ADD_PRODUCT", title: productInput });
             setProductInput("");
+            e.preventDefault();
           }}
-          style={{ width: "50px", height: "40px", marginLeft: "5px" }}
         >
-          add
-        </Btn>
+          <InputPink
+            placeholder="Введите название продукта"
+            value={productInput}
+            onChange={(e) => setProductInput(e.target.value)}
+          />
+          <Btn
+            type="submit"
+            style={{ width: "50px", height: "40px", marginLeft: "5px" }}
+          >
+            add
+          </Btn>
+        </form>
       </div>
       <Link href="/">
         <a>Перейти на главную страницу</a>
